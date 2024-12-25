@@ -16,6 +16,9 @@ const createBlog = async (req, res) => {
     }catch(err){
         if(err.code === 11000)
             return res.status(409).send({message:"A blog with this title already exists."}); //409: conflict detected in client request
+        if(err.name = "ValidationError")
+            return res.status(400).send({message:err.message});
+        
         res.status(500).send({message:"Something went wrong!", err});
     }
 };
@@ -31,19 +34,20 @@ const getAllBlogs = async (req,res) =>{
 }
 
 const getBlogById = async (req,res) =>{
-    try{
-        const {blogId} = req.params;
-        return res.send( await Blog.findById(blogId) );
-     }catch(err){
-         console.log(err);
-         res.status(500).send({message:"Something went wrong!", err});
-     }
+    // try{
+    //     const {id} = req.params;
+    //     return res.send( await Blog.findById(id) );
+    //  }catch(err){
+    //      console.log(err);
+    //      res.status(500).send({message:"Something went wrong!", err});
+    //  }
+    return req.blog //By the time we reach this function, in the req object we already have a key called blog, created by the findBlogByIdAndAttach middleware
 }
 
 const updateBlogById = async (req,res) =>{
     try{
-        const {blogId} = req.params;
-        const modifiedBlog = await Blog.findByIdAndUpdate(blogId,req.body,{
+        const {id} = req.params;
+        const modifiedBlog = await Blog.findByIdAndUpdate(id,req.body,{
              new:true
             // returnDocument:'after'
         });
@@ -56,8 +60,8 @@ const updateBlogById = async (req,res) =>{
 
 const deleteBlogById = async (req,res) =>{
     try{
-        const {blogId} = req.params;
-        await Blog.findByIdAndDelete(blogId,req.body);
+        const {id} = req.params;
+        await Blog.findByIdAndDelete(id,req.body);
         res.sendStatus(204); //204: The request that you made was success, there is nothing to send back to you.
      }catch(err){
          console.log(err);
