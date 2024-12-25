@@ -3,8 +3,14 @@ const {createBlog, getAllBlogs,getBlogById,updateBlogById,deleteBlogById} = requ
 
 router.post("/new", createBlog);
 router.get("/",getAllBlogs);
-router.get("/:blogId", getBlogById);
-router.patch("/:blogId", updateBlogById);
-router.delete("/:blogId",deleteBlogById);
+
+// router.get("/:blogId", getBlogById);
+// router.patch("/:blogId", updateBlogById);
+// router.delete("/:blogId",deleteBlogById);
+
+router.route("/:blogId")
+.get(getBlogById)
+.patch(updateBlogById)
+.delete(deleteBlogById);
 
 module.exports = router;
