@@ -2,7 +2,7 @@ POST http://localhost:8082/blogs/new
 Content-Type: application/json
 
 {
-    "title": "Dehradun", 
+    "title": "Demo", 
     "authors": ["Jane Doe","Elf Wick"],
     "content": "", 
     "publishedAt": null
@@ -21,3 +21,6 @@ Content-Type: application/json
 {
     "content": "Dehradun is a hill station."
 }
+
+###
+DELETE http://localhost:8082/blogs/676bdc55a4f400aa98154fbc
