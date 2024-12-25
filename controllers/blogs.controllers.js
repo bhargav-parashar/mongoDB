@@ -18,6 +18,16 @@ const createBlog = async (req, res) => {
             return res.status(409).send({message:"A blog with this title already exists."});
         res.status(500).send({message:"Something went wrong!", err});
     }
+};
+
+const getAllBlogs = async (req,res) =>{
+    try{
+       return res.send( await Blog.find({}) );
+    }catch(err){
+        console.log(err);
+        res.status(500).send({message:"Something went wrong!", err});
+    }
+
 }
 
-module.exports = {createBlog};
+module.exports = {createBlog,getAllBlogs};
