@@ -30,4 +30,15 @@ const getAllBlogs = async (req,res) =>{
 
 }
 
-module.exports = {createBlog,getAllBlogs};
+const getBlogById = async (req,res) =>{
+    try{
+        const {blogId} = req.params;
+        return res.send( await Blog.findById(blogId) );
+     }catch(err){
+         console.log(err);
+         res.status(500).send({message:"Something went wrong!", err});
+     }
+}
+
+
+module.exports = {createBlog,getAllBlogs,getBlogById};
