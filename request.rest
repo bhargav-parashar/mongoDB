@@ -2,7 +2,7 @@ POST http://localhost:8082/blogs/new
 Content-Type: application/json
 
 {
-    "title": "Demo", 
+    "title": "Darjeeling", 
     "authors": ["Jane Doe","Elf Wick"],
     "content": "", 
     "publishedAt": null
@@ -12,15 +12,15 @@ Content-Type: application/json
 GET http://localhost:8082/blogs
 
 ###
-GET http://localhost:8082/blogs/676bd5e69b14e35f547dcd13
+GET http://localhost:8082/blogs/676c34ac90ce309efa380413
 
 ###
-PATCH http://localhost:8082/blogs/676bd0335b7aa4cb58fee516
+PATCH http://localhost:8082/blogs/676c34ac90ce309efa380413
 Content-Type: application/json
 
 {
-    "content": "Dehradun is a hill station."
+    "content": "Darjeeling is famous for its tea."
 }
 
 ###
-DELETE http://localhost:8082/blogs/676bdc55a4f400aa98154fbc
+DELETE http://localhost:8082/blogs/676c34ac90ce309efa380413

@@ -6,7 +6,9 @@ const blogSchema = new mongoose.Schema({
     authors:{type: [String] }, //Authors is an array of strings
     content: {type: String, default: ""}, //Content is string
     publishedAt: {type: Date, default: null}, //publishedAt is Date  
-});
+},
+{timestamps: true}
+);
 
 const blogModel = mongoose.model("Blog",blogSchema); //Name of model, schema, collection. If name of collection is not provided, by default an S is added to the name of the model and that is taken as the collection name.
 
