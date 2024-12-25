@@ -23,4 +23,22 @@ Content-Type: application/json
 }
 
 ###
-DELETE http://localhost:8082/blogs/676c34ac90ce309efa380413
+DELETE http://localhost:8082/blogs/676c3ba19c86a8c37253f93b
+
+###
+POST http://localhost:8082/blogs/new
+Content-Type: application/json
+
+{
+    "title": "Oak", 
+    "authors": [
+        {
+            "fullName": "Howard Roark",
+            "email": "mrroark@outlook.com",
+            "twitterHandle": "@_howard_",
+            "image": "http://pbs.twimg.com/profile_images/1438358493799452672/vNWqLAHP_400x400.jpg"
+        }
+    ],
+    "content": "", 
+    "publishedAt": null
+}
