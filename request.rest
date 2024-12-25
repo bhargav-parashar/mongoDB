@@ -2,7 +2,7 @@ POST http://localhost:8082/blogs/new
 Content-Type: application/json
 
 {
-    "title": "New Blog", 
+    "title": "Dehradun", 
     "authors": ["Jane Doe","Elf Wick"],
     "content": "", 
     "publishedAt": null

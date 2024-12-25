@@ -8,7 +8,7 @@ const PORT = 8082;
 
 connectDB(); 
 
-server.use(express.json()); //middleware : Checks the content type header of the request. If it is application/json, it is going to parse the body of the request in json format.
+server.use(express.json()); //middleware : Checks the content type header of the request. If it is application/json, it is going to parse the body of the request in json format. Without this, req.body will be undefined when it reaches the controller.
 
 server.get("/", (req, res) => {
   res.send("<h1>Currency Database</h1>");
