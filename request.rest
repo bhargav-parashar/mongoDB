@@ -13,3 +13,11 @@ GET http://localhost:8082/blogs
 
 ###
 GET http://localhost:8082/blogs/676bd5e69b14e35f547dcd13
+
+###
+PATCH http://localhost:8082/blogs/676bd0335b7aa4cb58fee516
+Content-Type: application/json
+
+{
+    "content": "Dehradun is a hill station."
+}

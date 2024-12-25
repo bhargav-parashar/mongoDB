@@ -40,5 +40,19 @@ const getBlogById = async (req,res) =>{
      }
 }
 
+const updateBlogById = async (req,res) =>{
+    try{
+        const {blogId} = req.params;
+        const modifiedBlog = await Blog.findByIdAndUpdate(blogId,req.body,{
+             new:true
+            // returnDocument:'after'
+        });
+        res.send(modifiedBlog);
+     }catch(err){
+         console.log(err);
+         res.status(500).send({message:"Something went wrong!", err});
+     }
+}
 
-module.exports = {createBlog,getAllBlogs,getBlogById};
+
+module.exports = {createBlog,getAllBlogs,getBlogById,updateBlogById};
