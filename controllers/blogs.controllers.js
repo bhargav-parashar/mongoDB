@@ -69,5 +69,23 @@ const deleteBlogById = async (req,res) =>{
      }
 }
 
+const searchBlogs = async (req,res)=>{
+    const {title, author} = req.query;
 
-module.exports = {createBlog,getAllBlogs,getBlogById,updateBlogById,deleteBlogById};
+    // res.send( await Blog.find({title : title})) //Any Model API returns promise
+    //res.send(await Blog.find({title : {$regex: new RegExp(title), $options: "i"} }));//i flag means case insensitive
+    // res.send(await Blog.find({title : new RegExp(title, "i" )})); 
+
+    res.send(await Blog.find({authors:{ $elemMatch : {email : author } } }) )
+   
+}
+
+
+module.exports = {
+    createBlog,
+    getAllBlogs,
+    getBlogById,
+    updateBlogById,
+    deleteBlogById,
+    searchBlogs
+};

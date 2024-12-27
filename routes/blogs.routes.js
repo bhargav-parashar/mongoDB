@@ -1,10 +1,19 @@
 const router = require("express").Router();
-const {createBlog, getAllBlogs,getBlogById,updateBlogById,deleteBlogById} = require("../controllers/blogs.controllers"); 
+const {
+    createBlog, 
+    getAllBlogs,
+    getBlogById,
+    updateBlogById,
+    deleteBlogById,
+    searchBlogs
+} = require("../controllers/blogs.controllers"); 
+
 const { documentIdValidator} = require("../middlewares/validate");
 const {findBlogByIdAndAttach} = require("../middlewares/findBlogByIdAndAttach");
 
 router.post("/new", createBlog);
 router.get("/",getAllBlogs);
+router.get("/search",searchBlogs);
 
 // router.get("/:id", getBlogById);
 // router.patch("/:id", updateBlogById);

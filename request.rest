@@ -42,3 +42,15 @@ Content-Type: application/json
     "content": "", 
     "publishedAt": null
 }
+
+###
+GET http://localhost:8082/blogs/search?author=mrwick@eliminator.in
+
+###
+GET http://localhost:8082/blogs/search?title=De
+
+###
+GET http://localhost:8082/blogs/search?title=&author=
+
+###
+GET http://localhost:8082/blogs/search
