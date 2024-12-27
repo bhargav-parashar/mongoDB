@@ -8,12 +8,13 @@ const {
     searchBlogs
 } = require("../controllers/blogs.controllers"); 
 
-const { documentIdValidator} = require("../middlewares/validate");
+const { documentIdValidator,queryValidator} = require("../middlewares/validate");
 const {findBlogByIdAndAttach} = require("../middlewares/findBlogByIdAndAttach");
+const {blogSearchSchema} = require("../validations/blogs.validations");
 
 router.post("/new", createBlog);
 router.get("/",getAllBlogs);
-router.get("/search",searchBlogs);
+router.get("/search", queryValidator(blogSearchSchema), searchBlogs);
 
 // router.get("/:id", getBlogById);
 // router.patch("/:id", updateBlogById);
