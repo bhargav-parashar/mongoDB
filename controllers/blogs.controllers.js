@@ -1,5 +1,8 @@
 const Blog = require("../models/blog.model");
-const {create, getAll, updateById, deleteById, search } = require("../services/blogs.service");
+// const {create, getAll, updateById, deleteById, search } = require("../services/blogs.service");
+const BlogService = require("../services/blogs.service");
+
+const BlogServiceInstance = new BlogService(); // Create instance of the class
 
 const createBlog = async (req, res) => {
   try {
@@ -12,7 +15,7 @@ const createBlog = async (req, res) => {
 
     //Either use line 7 or line 10 & 11
 
-    const newBlog = await create(req.body);
+    const newBlog = await BlogServiceInstance.create(req.body);
     res.status(201).send(newBlog); //201 : created
 
   } catch (err) {
@@ -33,7 +36,7 @@ const createBlog = async (req, res) => {
 const getAllBlogs = async (req, res) => {
   try {
     // return res.send(await Blog.find({}));
-    return res.send(await getAll());
+    return res.send(await BlogServiceInstance.getAll());
   } catch (err) {
     console.log(err);
     res.status(500).send({ message: "Something went wrong!", err });
@@ -58,7 +61,7 @@ const updateBlogById = async (req, res) => {
     //   new: true,
     //    returnDocument:'after'
     // });
-    const modifiedBlog = await updateById(id, req.body);
+    const modifiedBlog = await BlogServiceInstance.updateById(id, req.body);
     res.send(modifiedBlog);
   } catch (err) {
     console.log(err);
@@ -71,7 +74,7 @@ const deleteBlogById = async (req, res) => {
 
     const { id } = req.params;
     // await Blog.findByIdAndDelete(id);
-    await deleteById(id);
+    await BlogServiceInstance.deleteById(id);
     res.sendStatus(204); //204: The request that you made was success, there is nothing to send back to you.
   
   } catch (err) {
@@ -113,7 +116,7 @@ const searchBlogs = async (req, res) => {
   //       );
   
   try{
-    res.send(await search(title, author))
+    res.send(await BlogServiceInstance.search(title, author))
   }catch(err){
     console.log(err);
     res.status(500).send({message : "Something went wrong", err});
